@@ -32,7 +32,7 @@ class MainVC: UIViewController {
         tableView.separatorStyle = .none
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -43,7 +43,7 @@ class MainVC: UIViewController {
         tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
     }
     func configureNavTitle() {
-        if let customFont = UIFont(name: "SpaceGrotesk-Bold", size: 34) {
+        if let customFont = UIFont(name: "SpaceGrotesk-Bold", size: 24) {
             let attrs = [
                 NSAttributedString.Key.foregroundColor: UIColor.label,
                 NSAttributedString.Key.font: customFont
@@ -55,7 +55,6 @@ class MainVC: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsItems.count
