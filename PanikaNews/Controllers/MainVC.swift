@@ -16,7 +16,9 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         self.title = "Panika News"
         navigationController?.navigationBar.prefersLargeTitles = true
+        configureNavTitle()
         view.backgroundColor = .white
+
         setupTableView()
         
         NetworkManager.shared.fetchNews { [weak self] newsItems in
@@ -25,7 +27,7 @@ class MainVC: UIViewController {
         }
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         view.addSubview(tableView)
@@ -40,21 +42,28 @@ class MainVC: UIViewController {
         tableView.dataSource = self
         tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
     }
+    func configureNavTitle() {
+        if let customFont = UIFont(name: "SpaceGrotesk-Bold", size: 34) {
+            let attrs = [
+                NSAttributedString.Key.foregroundColor: UIColor.label,
+                NSAttributedString.Key.font: customFont
+            ]
+            navigationController?.navigationBar.largeTitleTextAttributes = attrs
+        }
+
+    }
 }
 
 // MARK: - UITableViewDataSource
 
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of rows: \(newsItems.count)")
-        
         return newsItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
         let newsItem = newsItems[indexPath.row]
-        print("Configuring cell for item: \(newsItem.title)")
         cell.configure(with: newsItem)
         return cell
     }

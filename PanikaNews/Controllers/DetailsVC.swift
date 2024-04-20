@@ -17,7 +17,7 @@ class DetailsVC: UIViewController {
         configureViewsWithData()
     }
     
-    private func setupViews() {
+    func setupViews() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ class DetailsVC: UIViewController {
         setupConstraints()
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
@@ -59,11 +59,10 @@ class DetailsVC: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-            
         ])
     }
     
-    private func configureViewsWithData() {
+    func configureViewsWithData() {
         titleLabel.text = newsItem?.title
         timeLabel.text = newsItem?.time
         if let imageUrl = newsItem?.photoUrl {

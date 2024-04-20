@@ -11,8 +11,6 @@ struct NetworkManager {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
-                print("Network error: \(error?.localizedDescription ?? "Unknown error")")
-                
                 completion(nil)
                 return
             }
@@ -20,14 +18,10 @@ struct NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let newsResponse = try decoder.decode(NewsResponse.self, from: data)
-                print("Fetched \(newsResponse.list.count) news items")
-                
                 DispatchQueue.main.async {
                     completion(newsResponse.list)
                 }
             } catch {
-                print("Failed to decode JSON: \(error)")
-                
                 completion(nil)
             }
         }.resume()
