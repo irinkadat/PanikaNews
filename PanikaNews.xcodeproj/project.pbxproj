@@ -72,7 +72,6 @@
 		8C618DEB2BD2CF8D00394878 /* PanikaNews */ = {
 			isa = PBXGroup;
 			children = (
-				8C618E132BD30A6A00394878 /* Fonts */,
 				8C618E002BD2CFD700394878 /* App */,
 				8C618E012BD2CFE500394878 /* Controllers */,
 				8C618E082BD2D18C00394878 /* Model */,
@@ -105,6 +104,7 @@
 		8C618E022BD2CFF600394878 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8C618E132BD30A6A00394878 /* Fonts */,
 				8C618DFA2BD2CF8E00394878 /* Info.plist */,
 				8C618DF72BD2CF8E00394878 /* LaunchScreen.storyboard */,
 				8C618DF52BD2CF8E00394878 /* Assets.xcassets */,

@@ -82,6 +82,6 @@ extension MainVC: UITableViewDelegate {
     }
 }
 
-#Preview {
-    MainVC()
-}
+//#Preview {
+//    MainVC()
+//}
